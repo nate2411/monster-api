@@ -1,16 +1,9 @@
 const {Pool} = require('pg');
+const {user, host, database, password, port} = require('../secrets/db_configuration');
 
-const pool = new Pool({
-   user: 'node_user',
-   host: 'localhost',
-   database: 'monstersdb',
-   password: 'node_password',
-   port: 5432
+const pool = new Pool({user, host, database, password, port});
 
-});
 
-pool.query('SELECT * FROM monster', (err, res) => {
-    if (err) return console.log(err);
-    console.log(res)
-});
+
+module.exports = pool;
 
